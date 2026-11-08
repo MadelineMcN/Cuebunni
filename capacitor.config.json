@@ -1,0 +1,8 @@
+{
+  "appId": "com.cuebunni.app",
+  "appName": "Cuebunni",
+  "webDir": ".",
+  "server": {
+    "androidScheme": "https"
+  }
+}
