@@ -2,27 +2,32 @@
 
 A mobile-first Pilates class programming and personal cue library app.
 
-## Project goals
-- Build and edit Pilates exercise records with setup, movement instructions, equipment, spring information, breath, body-awareness prompts, common compensations, modifications, and personal teaching notes.
-- Generate and customize class sequences.
-- Save classes and export or import backups.
-- Run offline in an installable iPhone-friendly Progressive Web App.
-- Preserve the pink-and-purple Y2K desktop-inspired design.
+## Included in this repository
+- `index.html` — current corrected, interactive Y2K mobile-first prototype (HTML/CSS/JavaScript in one file)
+- `manifest.webmanifest` — Home Screen web-app metadata
+- `sw.js` — initial offline asset cache
+- `icon.svg` — temporary bunny icon
+- `package.json`, `capacitor.config.json` — starter configuration for potential native iOS packaging
 
-## Status
-**Early prototype; not a signed iOS app.** This private repository is initialized for source control. The previously generated offline prototype is **not yet migrated into this repository**.
+## Prototype features
+- Editable exercise library (setup, repetitions/timing, spring notes, cues, awareness prompts, compensations, and adaptations)
+- Personal notes and favorite teaching cues
+- Sample Reformer class builder with editable sequences
+- Local saved programs, backup export/import
+- Basic rule-based class check
 
-## Source verification policy
-The app is not affiliated with Merrithew or STOTT PILATES. STOTT repertoire names, spring recommendations, and modifications must be verified against authorized materials, with source and edition recorded. Unverified information must be visibly labeled. Instructor-written cues must not be presented as official wording.
+## Run and install
+The page needs to be hosted over HTTPS for reliable mobile browser testing and Home Screen installation. The repository **is not published as a website**. Opening downloaded HTML in iOS Files/ChatGPT preview may not execute its JavaScript.
 
-## Safety and data
-- No client-identifiable health information in example records.
-- Keep saved classes and custom cues local-first with exportable backups.
-- Do not embed API keys in frontend JavaScript.
-- Treat generated programming guidance as instructor-review material, not certification or safety approval.
+Once hosted, open the HTTPS address in Safari, test all buttons, and use Share → Add to Home Screen. Offline caching is rudimentary and should be tested on device. There is no signed IPA or App Store application yet.
 
-## Setup roadmap
-1. Import the corrected Cuebunni prototype into `www/`.
-2. Add iOS mobile interaction tests.
-3. Verify spring colors and official exercise details against authorized manuals.
-4. Deploy as HTTPS PWA only after button functionality is confirmed.
+## Important content and safety limitations
+This is a **prototype, not a validated STOTT teaching tool**. The original cue text is illustrative, and modifications, spring colors and full repertoire details have *not* been verified as official STOTT instructions. Verify any recommendations against authorized Merrithew materials and qualified instructors before using with clients. Cuebunni is not affiliated with Merrithew.
+
+Local browser storage may be erased. Export backups regularly. Do not store client-identifiable medical information in this prototype. Do not put API credentials in browser code.
+
+## Next steps
+1. Deploy a private/test copy to HTTPS and verify interactivity on iPhone/iPad.
+2. Perform mobile accessibility and functional tests, including save/import/export.
+3. Validate repertoire and spring references against the authorized teaching materials.
+4. Add robust backups and app icon raster assets before broader use.
