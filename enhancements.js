@@ -25,6 +25,24 @@ const heroTitle=document.querySelector('#home .hero h1');
 const heroDescription=document.querySelector('#home .hero p');
 const heroAction=document.querySelector('#home .hero button');
 const heroKicker=document.querySelector('#home .hero .pill');
+const sectionTitles={home:'Your studio',builder:'Class builder',library:'Exercise library',editor:'Exercise notebook',saved:'Saved classes',checker:'Flow checker'};
+function updateSectionTitles(theme){
+ document.querySelectorAll('main .bar').forEach(bar=>{
+  if(!bar.dataset.originalLabel)bar.dataset.originalLabel=bar.firstChild&&bar.firstChild.nodeType===3?bar.firstChild.nodeValue:'';
+  let label=sectionTitles[bar.closest('section')?.id]||'Class plan';
+  if(bar.closest('#generated'))label='Class plan';
+  if(bar.closest('.appearance-panel'))label='Appearance';
+  if(bar.firstChild&&bar.firstChild.nodeType===3)
+   bar.firstChild.nodeValue=theme==='y2k'?bar.dataset.originalLabel:label;
+ });
+ const savedHeading=document.querySelector('#saved .inside h2');
+ if(savedHeading)savedHeading.textContent=theme==='y2k'?'Your little library ♡':'Your class plans';
+ const libraryHeading=document.querySelector('#library .inside h2');
+ if(libraryHeading)libraryHeading.textContent=theme==='y2k'?'Find your next cue':'Movement library';
+ const libraryTab=document.querySelector('.tab[data-go="library"]');
+ if(libraryTab&&libraryTab.lastChild&&libraryTab.lastChild.nodeType===3)
+  libraryTab.lastChild.nodeValue=theme==='y2k'?'Cues':'Library';
+}
 function updateThemeLanguage(theme){
  if(theme==='y2k'){
   headerTagline.textContent='little cues. lovely classes. ✿';
@@ -44,6 +62,7 @@ function chooseTheme(v){
  const value=['y2k','studio','minimal'].includes(v)?v:'y2k';
  document.body.dataset.theme=value;
  updateThemeLanguage(value);
+ updateSectionTitles(value);
  themeNode.querySelectorAll('[data-theme-option]').forEach(el=>{const selected=el.dataset.themeOption===value;el.setAttribute('aria-pressed',selected);el.classList.toggle('selected',selected)});
  document.querySelector('meta[name="theme-color"]').content=value==='studio'?'#fafbf8':value==='minimal'?'#ffffff':'#f8cde9';
  try{localStorage.setItem('cuebunni_theme_v1',value)}catch(e){}
