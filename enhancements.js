@@ -75,8 +75,24 @@ const equipment=$id('equipment');equipment.innerHTML='<option>Reformer</option><
 const level=$id('level');level.innerHTML='<option>Essential</option><option>Intermediate</option>';
 const search=$id('search');
 const filters=document.createElement('div');
-filters.innerHTML='<div class="filter-grid"><label>Equipment<select id="libraryEquipment"><option value="all">All equipment</option><option>Reformer</option><option>Mat</option></select></label><label>Level<select id="libraryLevel"><option value="all">All levels</option><option>Essential</option><option>Intermediate</option></select></label></div><label style="display:flex;align-items:center;gap:7px;font-size:12px"><input type="checkbox" id="compactLibrary" checked style="width:auto">Compact phone view</label><p id="librarySummary" class="library-summary"></p>';
+filters.innerHTML=`<div class="filter-grid">
+<label for="libraryEquipment">Equipment<select id="libraryEquipment"><option value="all">All equipment</option><option>Reformer</option><option>Mat</option></select></label>
+<label for="libraryLevel">Level<select id="libraryLevel"><option value="all">All levels</option><option>Essential</option><option>Intermediate</option></select></label>
+<label for="libraryFocus">Focus<select id="libraryFocus"><option value="all">All focus areas</option><option value="upper">Arms / upper body</option><option value="lower">Lower body</option><option value="core">Abdominals / core</option><option value="mobility">Mobility / stretching</option></select></label>
+<label for="libraryProp">Props<select id="libraryProp"><option value="all">All props</option><option value="ball">Ball</option><option value="fitness circle">Fitness Circle</option><option value="maple pole">Maple Pole</option><option value="long box">Long Box</option><option value="short box">Short Box</option></select></label>
+</div><label style="display:flex;align-items:center;gap:7px;font-size:12px"><input type="checkbox" id="compactLibrary" checked style="width:auto">Compact phone view</label>
+<p id="librarySummary" class="library-summary"></p>`;
 search.insertAdjacentElement('afterend',filters);
+// Prop tags are metadata: box names identify apparatus, and other props can be tagged by instructors.
+for (const exercise of DATA) {
+ const location=(exercise.group||'')+' '+(exercise.name||'');
+ if(!exercise.props && /\(Long Box\)/i.test(location)) exercise.props='Long Box';
+ else if(!exercise.props && /\(Short Box\)/i.test(location)) exercise.props='Short Box';
+}
+if(!editFields.some(field=>field[0]==='props')){
+ const groupIndex=editFields.findIndex(field=>field[0]==='group');
+ editFields.splice(groupIndex+1,0,['props','Props used (comma-separated: Ball, Fitness Circle, Maple Pole, Long Box, Short Box)']);
+}
 const oldCard=card;
 card=function(x,i,context='library'){
  let html=oldCard(x,i,context);
