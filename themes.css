@@ -1,0 +1,53 @@
+/* CueBunni optional styles — responsive and persistent via theme.js */
+body[data-theme="studio"]{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#384b3e;background:#fafbf8}
+body[data-theme="studio"] header{background:#fff;border-bottom:1px solid #cedccf}
+body[data-theme="studio"] .small,body[data-theme="studio"] .muted,body[data-theme="studio"] .source{color:#657267}
+body[data-theme="studio"] .panel,body[data-theme="studio"] .exercise{background:#fff;border:1px solid #d0dccf;box-shadow:0 6px 22px #3e63400e;border-radius:16px}
+body[data-theme="studio"] .bar{background:#e7eee4;color:#3c5142}
+body[data-theme="studio"] .hero{background:linear-gradient(125deg,#f7f3e9,#e5eee4);border:1px solid #cbd9c9}
+body[data-theme="studio"] .pill{background:#ecf2e9;color:#496754}
+body[data-theme="studio"] .btn{background:#edf2eb;color:#3b5141;border:1px solid #c6d6c8;box-shadow:none;border-radius:10px}
+body[data-theme="studio"] .btn.primary{background:#607c67;color:#fff;border-color:#607c67}
+body[data-theme="studio"] .btn.ghost{background:#fff}
+body[data-theme="studio"] .cue,body[data-theme="studio"] .stat{background:#edf3eb}
+body[data-theme="studio"] .notice{background:#f5f1e8}
+body[data-theme="studio"] .warning{background:#faf1ec}
+body[data-theme="studio"] .section strong{color:#506d57}
+body[data-theme="studio"] input,body[data-theme="studio"] textarea,body[data-theme="studio"] select{border:1px solid #cbd9ca;color:#3b5141}
+body[data-theme="studio"] .tabs{background:#fff;border-top:1px solid #d3dfd1;box-shadow:0 -5px 15px #44574812}
+body[data-theme="studio"] .tab{color:#667568;text-shadow:none}
+body[data-theme="studio"] .tab.active{background:#ecf2e9;color:#42614a;border-color:#d2e0d3;box-shadow:none;transform:none}
+body[data-theme="studio"] .nav-gem,body[data-theme="studio"] .tab.active .nav-gem{background:#edf3e9;border:1px solid #d2dfd3;box-shadow:none}
+body[data-theme="studio"] .nav-icon{filter:grayscale(1) opacity(.72)}
+body[data-theme="studio"] .status{background:#496754}
+body[data-theme="minimal"]{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#292d31;background:#fff}
+body[data-theme="minimal"] header{background:#fff;border-bottom:1px solid #e5e7eb}
+body[data-theme="minimal"] .small,body[data-theme="minimal"] .muted,body[data-theme="minimal"] .source{color:#686f76}
+body[data-theme="minimal"] .panel,body[data-theme="minimal"] .hero,body[data-theme="minimal"] .exercise{border:1px solid #e5e7eb;box-shadow:none;background:#fff;border-radius:12px}
+body[data-theme="minimal"] .bar{background:#f4f5f6;color:#333}
+body[data-theme="minimal"] .btn{background:#f4f5f6;border:1px solid #d7dce0;box-shadow:none;color:#333;border-radius:8px}
+body[data-theme="minimal"] .btn.primary{background:#333a40;color:#fff}
+body[data-theme="minimal"] .btn.ghost{background:white}
+body[data-theme="minimal"] .pill,body[data-theme="minimal"] .cue,body[data-theme="minimal"] .stat{background:#f4f5f6;color:#41464c}
+body[data-theme="minimal"] .notice{background:#f4f5f6}
+body[data-theme="minimal"] .warning{background:#faf5ee}
+body[data-theme="minimal"] .section strong{color:#41464c}
+body[data-theme="minimal"] input,body[data-theme="minimal"] textarea,body[data-theme="minimal"] select{border:1px solid #d7dce0;color:#333}
+body[data-theme="minimal"] .tabs{background:#fff;border-top:1px solid #e5e7eb;box-shadow:none}
+body[data-theme="minimal"] .tab{color:#61666a;text-shadow:none}
+body[data-theme="minimal"] .tab.active{color:#252a2d;background:#f0f1f2;border-color:#ddd;box-shadow:none;transform:none}
+body[data-theme="minimal"] .nav-gem,body[data-theme="minimal"] .tab.active .nav-gem{background:#f5f5f5;border:1px solid #e5e7eb;box-shadow:none}
+body[data-theme="minimal"] .nav-icon{filter:grayscale(1)}
+body[data-theme="minimal"] .status{background:#333}
+.theme-picker{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.theme-picker label{margin:0;font-size:12px}
+.theme-picker select{width:auto;min-width:130px;max-width:160px;font-size:13px;padding:8px;border-radius:9px}
+.filter-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.filter-grid label{margin:0;font-size:12px}
+.filter-grid select{padding:10px;margin-top:4px}
+.library-summary{font-size:12px;opacity:.8}
+.library-compact .exercise .section,.library-compact .exercise .source{display:none}
+.library-compact .exercise{padding:12px}
+.library-compact .exercise .actions{margin-top:8px}
+.review-pill{font-size:12px;color:#8a6443}
+@media(max-width:420px){.theme-picker select{min-width:110px;max-width:135px}.logo{font-size:20px}}
