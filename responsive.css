@@ -239,3 +239,18 @@ body[data-theme="minimal"] .tile-prop{color:#4d5960;background:#f5f6f6;border:1p
 #library .filter-help{font-size:12px;line-height:1.45;color:#806b86;margin:5px 0 0}
 body[data-theme="studio"] #library .filter-help{color:#637667}
 body[data-theme="minimal"] #library .filter-help{color:#6c767d}
+
+
+/* v0.5.1: The original :root stays pink in the Y2K theme. Match the document
+   canvas, short-page viewport, and iPad safe-area with the active neutral theme. */
+html,body{min-height:100%}
+body{min-height:100vh;min-height:100dvh}
+html[data-theme="studio"]{background:#f6f8f3;color-scheme:light}
+html[data-theme="minimal"]{background:#fcfcfb;color-scheme:light}
+html[data-theme="y2k"]{background:#fce4f2}
+body[data-theme="studio"]{background-color:#f6f8f3}
+body[data-theme="minimal"]{background-color:#fcfcfb}
+@media(min-width:760px){
+ body[data-theme="studio"] .tabs{background:#fff!important;background-image:none!important;border-bottom:0!important;box-shadow:none!important}
+ body[data-theme="minimal"] .tabs{background:#fff!important;background-image:none!important;border-bottom:0!important;box-shadow:none!important}
+}
