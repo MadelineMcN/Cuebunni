@@ -20,9 +20,30 @@ themeNode.innerHTML=`<div class="bar">✦ Appearance <span>Choose your style</sp
 </div><p class="source">CueBunni v0.3 · Your theme is saved on this device.</p></div>`;
 const hero=$id('home').querySelector('.hero');
 hero.insertAdjacentElement('afterend',themeNode);
+const headerTagline=document.querySelector('header .small');
+const heroTitle=document.querySelector('#home .hero h1');
+const heroDescription=document.querySelector('#home .hero p');
+const heroAction=document.querySelector('#home .hero button');
+const heroKicker=document.querySelector('#home .hero .pill');
+function updateThemeLanguage(theme){
+ if(theme==='y2k'){
+  headerTagline.textContent='little cues. lovely classes. ✿';
+  heroTitle.textContent="Let's make something lovely ♡";
+  heroDescription.textContent='Build a thoughtful Pilates class, find natural cues, and keep your favorites in one place.';
+  heroAction.textContent='✦ Create a class';
+  heroKicker.textContent='✦ your pocket class studio';
+ }else{
+  headerTagline.textContent=theme==='studio'?'Your Pilates teaching workspace':'Pilates class planning & cue library';
+  heroTitle.textContent=theme==='studio'?'Teach with clarity and confidence.':'Your Pilates workspace.';
+  heroDescription.textContent='Organize your repertoire, build thoughtful classes, and keep every cue at your fingertips.';
+  heroAction.textContent='Create a class →';
+  heroKicker.textContent='CLASS PLANNING · REPERTOIRE · CUES';
+ }
+}
 function chooseTheme(v){
  const value=['y2k','studio','minimal'].includes(v)?v:'y2k';
  document.body.dataset.theme=value;
+ updateThemeLanguage(value);
  themeNode.querySelectorAll('[data-theme-option]').forEach(el=>{const selected=el.dataset.themeOption===value;el.setAttribute('aria-pressed',selected);el.classList.toggle('selected',selected)});
  document.querySelector('meta[name="theme-color"]').content=value==='studio'?'#fafbf8':value==='minimal'?'#ffffff':'#f8cde9';
  try{localStorage.setItem('cuebunni_theme_v1',value)}catch(e){}
@@ -68,5 +89,5 @@ generate=function(){
  toast('Draft created. Verify level, sequence, springs and setup before teaching.');
 };
 $id('libraryCount').textContent=allExercises().length;
-renderLibrary();
+// The library-ui.js module renders the new card grid after enhancements load.
 })();
