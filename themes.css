@@ -51,3 +51,22 @@ body[data-theme="minimal"] .status{background:#333}
 .library-compact .exercise .actions{margin-top:8px}
 .review-pill{font-size:12px;color:#8a6443}
 @media(max-width:420px){.theme-picker select{min-width:110px;max-width:135px}.logo{font-size:20px}}
+
+
+/* Clear and touch-friendly appearance selector, visible below the Home hero. */
+.appearance-panel .bar span{font-size:12px;font-weight:600;opacity:.9}
+.theme-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
+.theme-option{min-width:0;padding:12px 7px 10px;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:flex-start;background:#fff;border:2px solid #e9daee;border-radius:13px;color:inherit;box-shadow:none;text-align:center;line-height:1.2}
+.theme-option strong{font-size:12px}
+.theme-option small{font-size:10px;line-height:1.2;color:inherit;opacity:.75}
+.theme-option.selected{border-color:#93509d;background:#fbf0fa;box-shadow:0 0 0 2px #f4def5}
+.theme-swatches{display:flex;gap:4px;justify-content:center;padding:3px}
+.theme-swatches i{display:block;width:19px;height:19px;border:1px solid #0002;border-radius:50%}
+body[data-theme="studio"] .appearance-panel .theme-option,body[data-theme="minimal"] .appearance-panel .theme-option{background:#fff;box-shadow:none}
+body[data-theme="studio"] .appearance-panel .theme-option{border-color:#d0dccf}
+body[data-theme="studio"] .appearance-panel .theme-option.selected{border-color:#56775c;background:#edf3eb}
+body[data-theme="studio"] .logo span{color:#698772!important}
+body[data-theme="minimal"] .appearance-panel .theme-option{border-color:#d9dde0}
+body[data-theme="minimal"] .appearance-panel .theme-option.selected{border-color:#45494c;background:#f4f5f6}
+body[data-theme="minimal"] .logo span{color:#545b60!important}
+@media(max-width:350px){.theme-options{gap:5px}.theme-option{padding:10px 4px}.theme-swatches i{width:15px;height:15px}.theme-option strong{font-size:11px}}
