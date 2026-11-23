@@ -17,7 +17,7 @@ themeNode.innerHTML=`<div class="bar">✦ Appearance <span>Choose your style</sp
 <button type="button" class="theme-option" data-theme-option="y2k" aria-pressed="false"><span class="theme-swatches"><i style="background:#f9c6e5"></i><i style="background:#bb84da"></i><i style="background:#ffe5a7"></i></span><strong>Glossy Y2K</strong><small>Playful pink &amp; lilac</small></button>
 <button type="button" class="theme-option" data-theme-option="studio" aria-pressed="false"><span class="theme-swatches"><i style="background:#fff"></i><i style="background:#90a98f"></i><i style="background:#e8dcc8"></i></span><strong>Sage &amp; Sand</strong><small>Clean Pilates studio</small></button>
 <button type="button" class="theme-option" data-theme-option="minimal" aria-pressed="false"><span class="theme-swatches"><i style="background:#fff"></i><i style="background:#484f54"></i><i style="background:#d9dde0"></i></span><strong>Minimal</strong><small>Simple &amp; neutral</small></button>
-</div><p class="source">CueBunni v0.3 · Your theme is saved on this device.</p></div>`;
+</div><p class="source">CueBunni v0.5 · Your theme is saved on this device.</p></div>`;
 const hero=$id('home').querySelector('.hero');
 hero.insertAdjacentElement('afterend',themeNode);
 const headerTagline=document.querySelector('header .small');
@@ -108,7 +108,7 @@ renderLibrary=function(){
  $id('librarySummary').textContent=arr.length+' movements · '+(level==='all'?'both levels':level)+' · '+(equip==='all'?'both apparatus':equip);
  $id('libraryList').innerHTML=arr.length?arr.map((x,i)=>card(x,i)).join(''):'<div class="empty">No matching exercises ♡</div>';
 };
-['libraryEquipment','libraryLevel','compactLibrary'].forEach(id=>$id(id).addEventListener('change',()=>renderLibrary()));
+// The card-grid module owns all library filter event listeners.
 const oldGenerate=generate;
 generate=function(){
  const equip=equipment.value,lvl=level.value;
