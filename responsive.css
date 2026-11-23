@@ -273,3 +273,23 @@ body[data-theme="minimal"] .library-filters {background:#fafbfa;border-color:#e1
 body[data-theme="minimal"] .filter-clear {color:#48565f}
 @media(max-width:380px){.library-filters {padding:12px}.library-filters .filter-grid {gap:8px!important}.library-filters .filter-grid select {font-size:13px;padding:10px 6px}}
 @media(min-width:1100px){.library-filters .filter-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+
+/* Y2K phone: clip rectangular window headers to their rounded parent cards.
+   The original responsive rules used overflow:visible for tablet inspector layouts. */
+@media(max-width:599px){
+  body[data-theme="y2k"] .panel,
+  body[data-theme="y2k"] #library .panel {
+    overflow:clip;
+    border-radius:18px;
+  }
+  body[data-theme="y2k"] .panel > .bar {
+    border-radius:15px 15px 0 0;
+  }
+  body[data-theme="y2k"] .hero,
+  body[data-theme="y2k"] .library-filters,
+  body[data-theme="y2k"] .library-tile,
+  body[data-theme="y2k"] .exercise {
+    background-clip:padding-box;
+  }
+}
