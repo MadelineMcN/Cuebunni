@@ -254,3 +254,22 @@ body[data-theme="minimal"]{background-color:#fcfcfb}
  body[data-theme="studio"] .tabs{background:#fff!important;background-image:none!important;border-bottom:0!important;box-shadow:none!important}
  body[data-theme="minimal"] .tabs{background:#fff!important;background-image:none!important;border-bottom:0!important;box-shadow:none!important}
 }
+
+
+/* Filters are native page controls, with a clear 2×2 layout on phones. */
+.library-filters {margin:14px 0 19px;padding:15px;border:1px solid #e4d5e8;border-radius:14px;background:#fffbff}
+.filters-heading {display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.filters-heading strong {font-size:14px;letter-spacing:-.01em}
+.filter-clear {font-size:12px;font-weight:750;background:transparent;border:0;color:#8b508f;padding:8px 4px}
+.filter-clear:disabled {opacity:.35;cursor:default}
+.library-filters .search {margin:4px 0 12px!important}
+.library-filters .filter-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px!important;margin:0!important}
+.library-filters .filter-grid label {display:block;margin:0!important;font-size:12px}
+.library-filters .filter-grid select {width:100%;min-width:0;margin:5px 0 0;padding:10px 8px;font-size:14px;height:45px}
+.library-filters .filter-help {margin:11px 0 3px!important}
+body[data-theme="studio"] .library-filters {background:#f8faf7;border-color:#dce6db}
+body[data-theme="studio"] .filter-clear {color:#4e7058}
+body[data-theme="minimal"] .library-filters {background:#fafbfa;border-color:#e1e5e5}
+body[data-theme="minimal"] .filter-clear {color:#48565f}
+@media(max-width:380px){.library-filters {padding:12px}.library-filters .filter-grid {gap:8px!important}.library-filters .filter-grid select {font-size:13px;padding:10px 6px}}
+@media(min-width:1100px){.library-filters .filter-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
