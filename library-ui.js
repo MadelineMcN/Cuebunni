@@ -134,6 +134,9 @@
     matching=filtered();
     const shown=matching.slice(0,visible);
     summary.textContent=matching.length+' movements found · showing '+shown.length+' · Tap a card for full cues and setup';
+    const anyActive=Boolean(document.getElementById('search').value.trim())||
+      ['libraryEquipment','libraryLevel','libraryFocus','libraryProp'].some(id=>document.getElementById(id).value!=='all');
+    if(clearButton)clearButton.disabled=!anyActive;
     workspace.classList.toggle('view-list',view==='list');
     workspace.classList.toggle('view-grid',view==='grid');
     list.innerHTML=shown.length?shown.map(tile).join(''):'<div class="library-empty"><h3>No movements match these filters</h3><p>Try clearing a filter. Props only show exercises tagged with that item; add prop tags using Edit &amp; notes.</p></div>';
@@ -169,6 +172,14 @@
     renderLibrary();
   });
   document.getElementById('librarySort').addEventListener('change',renderLibrary);
+  const clearButton=document.getElementById('clearLibraryFilters');
+  if(clearButton)clearButton.addEventListener('click',()=>{
+    document.getElementById('search').value='';
+    ['libraryEquipment','libraryLevel','libraryFocus','libraryProp'].forEach(id=>document.getElementById(id).value='all');
+    visible=36;
+    closeInspector(false);
+    renderLibrary();
+  });
   ['search','libraryEquipment','libraryLevel','libraryFocus','libraryProp'].forEach(id=>{
     document.getElementById(id).addEventListener(id==='search'?'input':'change',()=>{
       visible=36;
