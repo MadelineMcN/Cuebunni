@@ -80,7 +80,7 @@ section { min-width:0 }
   #home .hero h1 {font-size:clamp(27px,3vw,39px)}
   .theme-options {gap:8px}
 }
-@media(min-width:840px){
+@media(min-width:760px){
   :root {--sidebar-size:184px}
   header {padding:18px clamp(22px,3vw,55px) 17px calc(var(--sidebar-size) + clamp(22px,3vw,55px));min-height:82px}
   body .tabs {left:0;right:auto;top:82px;bottom:0;transform:none;width:var(--sidebar-size);height:auto;flex-direction:column;justify-content:flex-start;gap:7px;align-items:stretch;overflow-y:auto;border-radius:0;border-left:0;border-right:1px solid #dcbedc;padding:25px 12px;box-shadow:3px 0 15px #985b8720}
@@ -94,7 +94,7 @@ section { min-width:0 }
   #savedList {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
   #savedList .exercise {margin:0}
 }
-@media(min-width:1080px){
+@media(min-width:1000px){
   #builder {display:grid;grid-template-columns:minmax(290px,340px) minmax(0,1fr);gap:22px;align-items:start}
   #builder>.panel {position:sticky;top:105px}
   #generated>.panel {margin:0}
@@ -149,7 +149,7 @@ body[data-theme="minimal"] .panel {border:1px solid #e6e9e9;border-radius:12px;b
 body[data-theme="studio"] .bar,body[data-theme="minimal"] .bar {font-size:12px;font-weight:750;letter-spacing:.085em;text-transform:uppercase;padding:14px 19px}
 body[data-theme="studio"] .bar {background:#f0f4ed;color:#46624e;border-radius:13px 13px 0 0;border-bottom:1px solid #dbe5d9}
 body[data-theme="minimal"] .bar {background:#fafafa;color:#4b555d;border-radius:11px 11px 0 0;border-bottom:1px solid #eaeeee}
-body[data-theme="studio"] .bar>span:not(.appearance-panel .bar>span),body[data-theme="minimal"] .bar>span:not(.appearance-panel .bar>span) {display:none}
+body[data-theme="studio"] .panel:not(.appearance-panel) .bar>span,body[data-theme="minimal"] .panel:not(.appearance-panel) .bar>span {display:none}
 body[data-theme="studio"] .hero,body[data-theme="minimal"] .hero {box-shadow:none;border-radius:16px}
 body[data-theme="studio"] .hero {background:linear-gradient(115deg,#fffdf8 0%,#f0f5ed 56%,#e5eee3 100%);border:1px solid #dbe4d7}
 body[data-theme="minimal"] .hero {background:#f6f7f6;border:1px solid #e4e8e6}
