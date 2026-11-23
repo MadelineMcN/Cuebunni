@@ -2,19 +2,25 @@
 
 **Open the app:** [Cuebunni on GitHub Pages](https://madelinemcn.github.io/Cuebunni/)
 
-A mobile-first Pilates class programming and personal cue library app.
+A responsive Pilates class programming and personal cue library app for phones, tablets, and desktop browsers.
 
 ## Included in this repository
-- `index.html` — current corrected, interactive Y2K mobile-first prototype (HTML/CSS/JavaScript in one file)
+- `index.html` — app shell, original class builder, saved programs and editing logic
+- `repertoire.js` — Essential and Intermediate movement catalogs for Mat and Reformer
+- `enhancements.js`, `library-ui.js` — appearance preferences, searchable card grid and exercise detail inspector
+- `themes.css`, `responsive.css` — Y2K, Sage & Sand, Minimal, tablet/desktop layout and navigation
 - `manifest.webmanifest` — Home Screen web-app metadata
-- `sw.js` — initial offline asset cache
+- `sw.js` — versioned offline asset cache
 - `icon.svg` — temporary bunny icon
 - `package.json`, `capacitor.config.json` — starter configuration for potential native iOS packaging
 
-## Prototype features
+## Features
 - Editable exercise library (setup, repetitions/timing, spring notes, cues, awareness prompts, compensations, and adaptations)
 - Personal notes and favorite teaching cues
-- Sample Reformer class builder with editable sequences
+- Sample Reformer class builder and draft sequences for Essential/Intermediate Mat or Reformer
+- Filterable and sortable library with responsive card/list view and detailed cue inspector
+- Three persistent themes: Glossy Y2K, Sage & Sand, and Minimal
+- Tablet/desktop sidebar navigation and flexible two-column workspace
 - Local saved programs, backup export/import
 - Basic rule-based class check
 
