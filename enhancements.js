@@ -61,6 +61,7 @@ function updateThemeLanguage(theme){
 function chooseTheme(v){
  const value=['y2k','studio','minimal'].includes(v)?v:'y2k';
  document.body.dataset.theme=value;
+ document.documentElement.dataset.theme=value;
  updateThemeLanguage(value);
  updateSectionTitles(value);
  themeNode.querySelectorAll('[data-theme-option]').forEach(el=>{const selected=el.dataset.themeOption===value;el.setAttribute('aria-pressed',selected);el.classList.toggle('selected',selected)});
