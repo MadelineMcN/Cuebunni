@@ -218,3 +218,19 @@ body[data-theme="studio"] .appearance-panel .theme-option {border-color:#dce5da}
 body[data-theme="minimal"] .appearance-panel .theme-option {border-color:#e2e6e5}
 body[data-theme="studio"] .appearance-panel .theme-option.selected {background:#eff5ec;border-color:#607c66}
 body[data-theme="minimal"] .appearance-panel .theme-option.selected {background:#f4f5f5;border-color:#5c666b}
+
+
+/* Four library filters remain balanced on tablet and desktop. */
+#library .filter-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px}
+#library .filter-grid label{min-width:0}
+#library .filter-grid select{width:100%;min-width:0;max-width:100%;text-overflow:ellipsis;white-space:nowrap}
+.tile-props{display:flex;flex-wrap:wrap;gap:5px;margin:-2px 0 2px}
+.tile-prop{display:inline-block;font-size:10px;line-height:1.25;font-weight:750;padding:5px 7px;border:1px solid #e4d6e6;border-radius:6px;color:#865590;background:#f9f3fa}
+body[data-theme="studio"] .tile-prop{color:#54725b;background:#f1f5ed;border:1px solid #d9e5d8}
+body[data-theme="minimal"] .tile-prop{color:#4d5960;background:#f5f6f6;border:1px solid #e1e6e6}
+@media(min-width:1100px){
+ #library .filter-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(min-width:600px) and (max-width:759px){
+ #library .filter-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
