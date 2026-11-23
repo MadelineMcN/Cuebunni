@@ -12,19 +12,24 @@ for(const x of extra){
 }
 const $id=id=>document.getElementById(id);
 const themeNode=document.createElement('div');
-themeNode.className='theme-picker';
-themeNode.innerHTML='<label for="themeChoice">Theme</label><select id="themeChoice" aria-label="App appearance"><option value="y2k">Glossy Y2K</option><option value="studio">Sage &amp; Sand</option><option value="minimal">Minimal</option></select>';
-document.querySelector('header').appendChild(themeNode);
+themeNode.className='panel appearance-panel';
+themeNode.innerHTML=`<div class="bar">✦ Appearance <span>Choose your style</span></div><div class="inside"><h2>Make it yours</h2><p class="muted">Switch the look anytime. Your classes and personal cues stay the same.</p><div class="theme-options" role="group" aria-label="App appearance">
+<button type="button" class="theme-option" data-theme-option="y2k" aria-pressed="false"><span class="theme-swatches"><i style="background:#f9c6e5"></i><i style="background:#bb84da"></i><i style="background:#ffe5a7"></i></span><strong>Glossy Y2K</strong><small>Playful pink &amp; lilac</small></button>
+<button type="button" class="theme-option" data-theme-option="studio" aria-pressed="false"><span class="theme-swatches"><i style="background:#fff"></i><i style="background:#90a98f"></i><i style="background:#e8dcc8"></i></span><strong>Sage &amp; Sand</strong><small>Clean Pilates studio</small></button>
+<button type="button" class="theme-option" data-theme-option="minimal" aria-pressed="false"><span class="theme-swatches"><i style="background:#fff"></i><i style="background:#484f54"></i><i style="background:#d9dde0"></i></span><strong>Minimal</strong><small>Simple &amp; neutral</small></button>
+</div><p class="source">CueBunni v0.3 · Your theme is saved on this device.</p></div>`;
+const hero=$id('home').querySelector('.hero');
+hero.insertAdjacentElement('afterend',themeNode);
 function chooseTheme(v){
  const value=['y2k','studio','minimal'].includes(v)?v:'y2k';
  document.body.dataset.theme=value;
- $id('themeChoice').value=value;
+ themeNode.querySelectorAll('[data-theme-option]').forEach(el=>{const selected=el.dataset.themeOption===value;el.setAttribute('aria-pressed',selected);el.classList.toggle('selected',selected)});
  document.querySelector('meta[name="theme-color"]').content=value==='studio'?'#fafbf8':value==='minimal'?'#ffffff':'#f8cde9';
  try{localStorage.setItem('cuebunni_theme_v1',value)}catch(e){}
 }
 let preferred='y2k';try{preferred=localStorage.getItem('cuebunni_theme_v1')||'y2k'}catch(e){}
 chooseTheme(preferred);
-$id('themeChoice').addEventListener('change',e=>chooseTheme(e.target.value));
+themeNode.addEventListener('click',e=>{const btn=e.target.closest('[data-theme-option]');if(btn)chooseTheme(btn.dataset.themeOption)});
 
 const equipment=$id('equipment');equipment.innerHTML='<option>Reformer</option><option>Mat</option>';
 const level=$id('level');level.innerHTML='<option>Essential</option><option>Intermediate</option>';
