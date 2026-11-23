@@ -92,7 +92,7 @@ renderLibrary=function(){
  $id('librarySummary').textContent=arr.length+' movements · '+(level==='all'?'both levels':level)+' · '+(equip==='all'?'both apparatus':equip);
  $id('libraryList').innerHTML=arr.length?arr.map((x,i)=>card(x,i)).join(''):'<div class="empty">No matching exercises ♡</div>';
 };
-['libraryEquipment','libraryLevel','compactLibrary'].forEach(id=>$id(id).addEventListener('change',renderLibrary));
+['libraryEquipment','libraryLevel','compactLibrary'].forEach(id=>$id(id).addEventListener('change',()=>renderLibrary()));
 const oldGenerate=generate;
 generate=function(){
  const equip=equipment.value,lvl=level.value;
