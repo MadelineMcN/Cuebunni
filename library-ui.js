@@ -46,6 +46,19 @@
 
   let view='grid',visible=36,selectedId=null,lastTrigger=null,matching=[];
   const safe = value => esc(value == null ? '' : value);
+  const focusLabels={upper:'Arms / upper body',lower:'Lower body',core:'Abdominals / core',mobility:'Mobility / stretching'};
+  const allowedProps=['ball','fitness circle','maple pole','long box','short box'];
+  function propTags(x) {
+    const raw=Array.isArray(x.props)?x.props:String(x.props||'').split(/[,;\n]/);
+    const tags=raw.map(x=>String(x).trim().toLowerCase()).filter(x=>allowedProps.includes(x));
+    // In some custom entries the apparatus may be in the category rather than the prop notes.
+    const group=(x.group||'')+' '+(x.name||'');
+    if(/\(long box\)/i.test(group)&&!tags.includes('long box'))tags.push('long box');
+    if(/\(short box\)/i.test(group)&&!tags.includes('short box'))tags.push('short box');
+    return tags;
+  }
+  function displayProp(name){return name.split(' ').map(w=>w[0].toUpperCase()+w.slice(1)).join(' ')}
+
   function isWide(){ return matchMedia('(min-width: 1180px)').matches; }
 
   function section(label,value,highlight){
@@ -67,7 +80,8 @@
       (x.reviewNeeded?'<p class="detail-review">Review the official training materials before teaching this movement.</p>':'')+
       '<div class="detail-metadata"><span><strong>Springs</strong>'+safe(x.springs||'Verify')+'</span>'+
       '<span><strong>Plane</strong>'+safe(x.plane||'Review')+'</span>'+
-      '<span><strong>Focus</strong>'+safe(x.zone||'Mixed')+'</span></div>'+
+      '<span><strong>Focus</strong>'+safe(focusLabels[x.zone]||'Mixed')+'</span></div>'+
+      section('Props used',propTags(x).map(displayProp).join(', ')||'No additional props tagged')+
       section('Starting position',x.setup)+section('Teaching cue',x.cue,true)+
       section('Muscles & resistance',x.anatomy)+section('What to notice',x.notice,true)+
       section('Compensations',x.watch)+section('Adjustments',x.adapt)+
@@ -88,6 +102,7 @@
       '<div class="tile-top"><span class="tile-label">'+safe(x.group)+'</span><span class="tile-level">'+safe(cls)+'</span></div>'+
       '<h3>'+safe(x.name)+'</h3>'+
       '<p class="tile-summary">'+safe(x.reviewNeeded?'Add your own setup and teaching cues.':(x.notice||'Open to review cues and notes.'))+'</p>'+
+      (propTags(x).length?'<div class="tile-props">'+propTags(x).map(p=>'<span class="tile-prop">'+safe(displayProp(p))+'</span>').join('')+'</div>':'')+
       '<div class="tile-foot"><span class="tile-springs">'+safe((x.equipment||'Reformer')==='Mat'?'Mat':x.springs||'Check springs')+'</span>'+
       '<button type="button" class="tile-open" data-inspect="'+safe(x.id)+'" aria-label="View details for '+safe(x.name)+'">View details <span aria-hidden="true">›</span></button></div>'+
       '</article>';
@@ -97,11 +112,15 @@
     const q=document.getElementById('search').value.trim().toLowerCase();
     const equipment=document.getElementById('libraryEquipment').value;
     const level=document.getElementById('libraryLevel').value;
+    const focus=document.getElementById('libraryFocus').value;
+    const prop=document.getElementById('libraryProp').value;
     const sort=document.getElementById('librarySort').value;
     const result=allExercises().filter(x=>
       (equipment==='all'||(x.equipment||'Reformer')===equipment) &&
       (level==='all'||(x.level||'Essential')===level) &&
-      (x.name+' '+x.group+' '+(x.cue||'')+' '+(x.notice||'')+' '+(x.anatomy||'')+' '+(x.notes||'')).toLowerCase().includes(q)
+      (focus==='all'||x.zone===focus) &&
+      (prop==='all'||propTags(x).includes(prop)) &&
+      (x.name+' '+x.group+' '+(x.cue||'')+' '+(x.notice||'')+' '+(x.anatomy||'')+' '+(x.notes||'')+' '+propTags(x).join(' ')).toLowerCase().includes(q)
     );
     result.sort((a,b)=>{
       if(sort==='az')return a.name.localeCompare(b.name);
@@ -114,10 +133,10 @@
   renderLibrary=function(){
     matching=filtered();
     const shown=matching.slice(0,visible);
-    summary.textContent=matching.length+' movements found · showing '+shown.length+' · Tap a card for the full setup and cues';
+    summary.textContent=matching.length+' movements found · showing '+shown.length+' · Tap a card for full cues and setup';
     workspace.classList.toggle('view-list',view==='list');
     workspace.classList.toggle('view-grid',view==='grid');
-    list.innerHTML=shown.length?shown.map(tile).join(''):'<div class="library-empty"><h3>No movements match yet</h3><p>Try a different search or filter.</p></div>';
+    list.innerHTML=shown.length?shown.map(tile).join(''):'<div class="library-empty"><h3>No movements match these filters</h3><p>Try clearing a filter. Props only show exercises tagged with that item; add prop tags using Edit &amp; notes.</p></div>';
     pager.innerHTML=visible<matching.length?'<button type="button" class="btn ghost" data-more-library>Show more movements ('+
       (matching.length-visible)+' remaining)</button>':'';
     if(selectedId){
@@ -150,7 +169,7 @@
     renderLibrary();
   });
   document.getElementById('librarySort').addEventListener('change',renderLibrary);
-  ['search','libraryEquipment','libraryLevel'].forEach(id=>{
+  ['search','libraryEquipment','libraryLevel','libraryFocus','libraryProp'].forEach(id=>{
     document.getElementById(id).addEventListener(id==='search'?'input':'change',()=>{
       visible=36;
       if(!isWide())closeInspector(false);
