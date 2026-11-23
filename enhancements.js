@@ -75,15 +75,7 @@ themeNode.addEventListener('click',e=>{const btn=e.target.closest('[data-theme-o
 const equipment=$id('equipment');equipment.innerHTML='<option>Reformer</option><option>Mat</option>';
 const level=$id('level');level.innerHTML='<option>Essential</option><option>Intermediate</option>';
 const search=$id('search');
-const filters=document.createElement('div');
-filters.innerHTML=`<div class="filter-grid">
-<label for="libraryEquipment">Equipment<select id="libraryEquipment"><option value="all">All equipment</option><option>Reformer</option><option>Mat</option></select></label>
-<label for="libraryLevel">Level<select id="libraryLevel"><option value="all">All levels</option><option>Essential</option><option>Intermediate</option></select></label>
-<label for="libraryFocus">Focus<select id="libraryFocus"><option value="all">All focus areas</option><option value="upper">Arms / upper body</option><option value="lower">Lower body</option><option value="core">Abdominals / core</option><option value="mobility">Mobility / stretching</option></select></label>
-<label for="libraryProp">Props<select id="libraryProp"><option value="all">All props</option><option value="ball">Ball</option><option value="fitness circle">Fitness Circle</option><option value="maple pole">Maple Pole</option><option value="long box">Long Box</option><option value="short box">Short Box</option></select></label>
-</div><label style="display:flex;align-items:center;gap:7px;font-size:12px"><input type="checkbox" id="compactLibrary" checked style="width:auto">Compact phone view</label>
-<p class="filter-help">Prop results include box-based repertoire and any props you tag when editing exercises. Ball, Fitness Circle and Maple Pole are not automatically assigned.</p><p id="librarySummary" class="library-summary"></p>`;
-search.insertAdjacentElement('afterend',filters);
+// Library filters live in index.html so they appear even before enhancement scripts load.
 // Prop tags are metadata: box names identify apparatus, and other props can be tagged by instructors.
 for (const exercise of DATA) {
  const location=(exercise.group||'')+' '+(exercise.name||'');
