@@ -19,6 +19,8 @@ A responsive Pilates class programming and personal cue library app for phones, 
 - Personal notes and favorite teaching cues
 - Sample Reformer class builder and draft sequences for Essential/Intermediate Mat or Reformer
 - Filterable and sortable library with responsive card/list view and detailed cue inspector
+- Combinable Equipment, Level, Focus (arms/upper body, lower body, abdominals/core, mobility), and Props (Ball, Fitness Circle, Maple Pole, Long Box, Short Box) filters
+- Editable exercise-level prop tags, with repertoire-named Long Box and Short Box movements tagged automatically; no assumption that untagged prop variations are official
 - Three persistent themes: Glossy Y2K, Sage & Sand, and Minimal
 - Tablet/desktop sidebar navigation and flexible two-column workspace
 - Local saved programs, backup export/import
