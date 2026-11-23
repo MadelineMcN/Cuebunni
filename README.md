@@ -1,5 +1,7 @@
 # Cuebunni 🐰
 
+**Open the app:** [Cuebunni on GitHub Pages](https://madelinemcn.github.io/Cuebunni/)
+
 A mobile-first Pilates class programming and personal cue library app.
 
 ## Included in this repository
@@ -17,7 +19,7 @@ A mobile-first Pilates class programming and personal cue library app.
 - Basic rule-based class check
 
 ## Run and install
-The page needs to be hosted over HTTPS for reliable mobile browser testing and Home Screen installation. The repository **is not published as a website**. Opening downloaded HTML in iOS Files/ChatGPT preview may not execute its JavaScript.
+The page needs to be hosted over HTTPS for reliable mobile browser testing and Home Screen installation. GitHub Pages uses the project URL linked above when Pages is enabled for the repository (Settings → Pages; deploy from `main` / root). Opening downloaded HTML in iOS Files/ChatGPT preview may not execute its JavaScript.
 
 Once hosted, open the HTTPS address in Safari, test all buttons, and use Share → Add to Home Screen. Offline caching is rudimentary and should be tested on device. There is no signed IPA or App Store application yet.
 
